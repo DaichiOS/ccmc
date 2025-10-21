@@ -183,7 +183,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Multilingual Staff</h3>
-              <p className="text-gray-600">Our team speaks English and Chinese (中文) to better serve our diverse community.</p>
+              <p className="text-gray-600">Our team speaks English, Mandarin (普通话), Cantonese (粤语), and Teochew (潮州话) to better serve our diverse community.</p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
               <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: brandColor }}>
@@ -329,36 +329,6 @@ export default function Home() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-6">
-            {/* Fertility (HeyDoc) */}
-            <div className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200">
-              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: '#1C1B3A' }} />
-              <div className="mb-4">
-                <Image
-                  src="/images/heydoc.png"
-                  alt="HeyDoc Health"
-                  width={200}
-                  height={70}
-                  className="h-10 w-auto"
-                />
-              </div>
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#1C1B3A' }}>Fertility Telehealth</h3>
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                Online fertility consultations with AHPRA-registered specialists
-              </p>
-              <div className="text-sm space-y-2 pt-4 border-t border-gray-100">
-                <div className="flex items-center gap-2 font-medium" style={{ color: '#1C1B3A' }}>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  Available 24/7
-                </div>
-                <p className="text-gray-500 ml-6 text-xs">
-                  <span className="line-through mr-1">$49</span>
-                  <span className="font-bold" style={{ color: '#1C1B3A' }}>$10</span>
-                </p>
-              </div>
-            </div>
-
             {/* General Practice */}
             <div className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200">
               <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: '#1C1B3A' }} />
@@ -471,6 +441,41 @@ export default function Home() {
                 <p className="text-gray-500 ml-6">9:00 AM - 1:00 PM</p>
               </div>
             </div>
+
+            {/* Fertility (HeyDoc) */}
+            <a
+              href="https://app.heydochealth.com.au/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200 cursor-pointer block"
+            >
+              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: '#1C1B3A' }} />
+              <div className="mb-4">
+                <Image
+                  src="/images/heydoc.png"
+                  alt="HeyDoc Health"
+                  width={200}
+                  height={70}
+                  className="h-10 w-auto"
+                />
+              </div>
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#1C1B3A' }}>Fertility Telehealth</h3>
+              <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                Online fertility consultations with AHPRA-registered specialists
+              </p>
+              <div className="text-sm space-y-2 pt-4 border-t border-gray-100">
+                <div className="flex items-center gap-2 font-medium" style={{ color: '#1C1B3A' }}>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Available 24/7
+                </div>
+                <p className="text-gray-500 ml-6 text-xs">
+                  <span className="line-through mr-1">$49</span>
+                  <span className="font-bold" style={{ color: '#1C1B3A' }}>$10</span>
+                </p>
+              </div>
+            </a>
 
             {/* Psychology */}
             <div className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border-2 border-dashed border-gray-300">
@@ -609,7 +614,7 @@ export default function Home() {
                   href="https://app.heydochealth.com.au/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 max-w-xs"
+                  className="block transition-all duration-300 hover:scale-105 max-w-xs"
                 >
                   <Image
                     src="/images/consultation.png"
@@ -721,7 +726,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Languages</p>
-                    <p className="text-gray-600">English, 中文 (Chinese)</p>
+                    <p className="text-gray-600">English, Mandarin (普通话), Cantonese (粤语), Teochew (潮州话)</p>
                   </div>
                 </div>
               </div>

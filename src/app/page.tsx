@@ -111,19 +111,13 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="space-y-4 pt-12">
-                  <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
+                  <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
                     <Image
                       src="/images/clinic2.png.jpg"
                       alt="Medical Services"
                       fill
                       className="object-cover"
                     />
-                  </div>
-                  <div className="p-6 rounded-2xl shadow-lg" style={{ backgroundColor: brandColor }}>
-                    <div className="text-white">
-                      <p className="text-4xl font-bold mb-1">15+</p>
-                      <p className="text-sm font-medium opacity-90">Years of Service</p>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -359,9 +353,9 @@ export default function Home() {
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Address</p>
                     <p className="text-gray-600">
-                      Level 1, Shop 40/41<br />
+                      Level 1, 14-28 Amy Street<br />
                       Campsie Centre<br />
-                      Campsie, NSW, Australia
+                      Campsie, NSW 2194
                     </p>
                     <p className="text-sm text-gray-500 mt-2">
                       Next to Australia Post, across from Big W

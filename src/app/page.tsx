@@ -4,7 +4,6 @@ import Image from "next/image";
 
 // Brand color - vibrant cyan
 const brandColor = '#00bcd4'; // More vibrant cyan
-const brandColorLight = '#b2ebf2'; // Light background
 const brandColorLighter = '#e0f7fa'; // Very light background
 
 export default function Home() {
@@ -51,7 +50,7 @@ export default function Home() {
                 <span className="text-sm font-semibold text-gray-700">Quality Healthcare in Campsie</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight text-gray-900">
-                Your Family's{' '}
+                Your Family&apos;s{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10">Health Partner</span>
                   <div className="absolute bottom-2 left-0 w-full h-4 -z-0 opacity-40" style={{ backgroundColor: brandColor }}></div>
@@ -312,7 +311,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Opening Hours</h2>
-            <p className="text-xl text-gray-400">We're here when you need us</p>
+            <p className="text-xl text-gray-400">We&apos;re here when you need us</p>
           </div>
           <div className="max-w-3xl mx-auto">
             <div className="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700">

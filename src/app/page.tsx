@@ -193,7 +193,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Central Location</h3>
-              <p className="text-gray-600">Conveniently located in Campsie Centre with easy access and parking. Next to Australia Post, across from Big W.</p>
+              <p className="text-gray-600">Conveniently located in Campsie Centre with easy access and parking. Across from Big W.</p>
             </div>
           </div>
         </div>
@@ -688,7 +688,7 @@ export default function Home() {
                       Campsie, NSW 2194
                     </p>
                     <p className="text-sm text-gray-500 mt-2">
-                      Next to Australia Post, across from Big W
+                      Across from Big W
                     </p>
                   </div>
                 </div>

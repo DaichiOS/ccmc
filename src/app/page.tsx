@@ -2,10 +2,63 @@
 
 import Image from "next/image";
 import { useEffect } from "react";
+import Script from "next/script";
 
 // Brand color - vibrant cyan
 const brandColor = '#00bcd4'; // More vibrant cyan
 const brandColorLighter = '#e0f7fa'; // Very light background
+
+// Structured Data for Local Business SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "Campsie Centre Medical Clinic",
+  "image": "https://campsiecmc.com.au/CampsieCentreMedicalLogo.png",
+  "url": "https://campsiecmc.com.au",
+  "telephone": "+61297181888",
+  "email": "campsiecmc@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Level 1, 14-28 Amy Street, Campsie Centre",
+    "addressLocality": "Campsie",
+    "addressRegion": "NSW",
+    "postalCode": "2194",
+    "addressCountry": "AU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -33.9119,
+    "longitude": 151.1036
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "09:00",
+      "closes": "15:00"
+    }
+  ],
+  "priceRange": "$$",
+  "paymentAccepted": "Bulk Billing, Mixed Billing, Cash, Card",
+  "languages": ["English", "Mandarin", "Cantonese", "Teochew"],
+  "medicalSpecialty": [
+    "General Practice",
+    "Physiotherapy",
+    "Podiatry",
+    "Dietetics",
+    "Fertility Consultation"
+  ],
+  "sameAs": [
+    "https://www.facebook.com/campsiecmc",
+    "https://www.instagram.com/campsiecmc"
+  ]
+};
 
 export default function Home() {
   // Infinite marquee scroll
@@ -45,6 +98,14 @@ export default function Home() {
   }, []);
 
   return (
+    <>
+      {/* Structured Data for SEO */}
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-white border-b border-gray-100">
@@ -760,5 +821,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

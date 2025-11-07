@@ -4,9 +4,13 @@ import Image from "next/image";
 import { useEffect } from "react";
 import Script from "next/script";
 
-// Brand color - vibrant cyan
-const brandColor = '#00bcd4'; // More vibrant cyan
-const brandColorLighter = '#e0f7fa'; // Very light background
+// Brand colors - Professional Medical Blue + Teal (OKLCH)
+const brandColor = 'oklch(0.4 0.1 223)'; // Primary blue
+const brandColorHover = 'oklch(0.35 0.1 223)'; // Darker blue for hover
+const brandColorLighter = 'oklch(0.9 0.05 223)'; // Light blue background
+const accentColor = 'oklch(0.5 0.12 180)'; // Teal/Cyan accent
+const accentColorHover = 'oklch(0.45 0.12 180)'; // Darker teal for hover
+const accentColorLighter = 'oklch(0.9 0.06 180)'; // Light teal background
 
 // Structured Data for Local Business SEO
 const structuredData = {
@@ -108,30 +112,37 @@ export default function Home() {
 
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <Image
-              src="/CampsieCentreMedicalLogo.png"
-              alt="Campsie Centre Medical Clinic"
-              width={400}
-              height={100}
-              priority
-              className="h-auto"
-            />
-            <div className="text-center md:text-right">
+      <header className="bg-white border-b shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between py-6 md:py-8">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <Image
+                src="/images/CampsieCentreMedicalLogo.png"
+                alt="Campsie Centre Medical Clinic"
+                width={600}
+                height={150}
+                priority
+                className="h-auto w-auto max-w-[320px] md:max-w-[400px] lg:max-w-[480px]"
+              />
+            </div>
+
+            {/* Contact Info */}
+            <div className="flex flex-col items-end gap-1">
               <a
                 href="tel:0297181888"
-                className="text-2xl font-bold hover:opacity-80 transition-opacity"
+                className="text-xl md:text-2xl font-bold hover:opacity-80 transition-opacity"
                 style={{ color: brandColor }}
               >
                 (02) 9718 1888
               </a>
-              <p className="text-gray-600 mt-1">
-                <a href="mailto:campsiecmc@gmail.com" className="hover:opacity-80 transition-opacity" style={{ color: brandColor }}>
-                  campsiecmc@gmail.com
-                </a>
-              </p>
+              <a
+                href="mailto:campsiecmc@gmail.com"
+                className="text-sm md:text-base hover:opacity-80 transition-opacity hidden sm:block"
+                style={{ color: brandColor }}
+              >
+                campsiecmc@gmail.com
+              </a>
             </div>
           </div>
         </div>
@@ -162,7 +173,9 @@ export default function Home() {
                 <a
                   href="#contact"
                   className="group inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
-                  style={{ backgroundColor: brandColor }}
+                  style={{ backgroundColor: accentColor }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = accentColorHover}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = accentColor}
                 >
                   <span className="flex items-center gap-2">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,37 +237,117 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-gray-50">
+      {/* Features Section - Redesigned */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: brandColor }}>
+              Why Choose Us?
+            </h2>
+            <div className="w-24 h-1.5 mx-auto rounded-full" style={{ backgroundColor: accentColor }}></div>
+          </div>
+
+          {/* Cards Grid - Even Layout */}
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: brandColor }}>
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+            {/* Card 1 - Bulk Billing */}
+            <div className="group">
+              <div className="bg-white rounded-2xl p-8 h-full shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-opacity-30"
+                   style={{ borderColor: accentColor }}>
+                {/* Image Container - Fixed Height */}
+                <div className="h-32 mb-6 flex items-center justify-center">
+                  <Image
+                    src="/images/bulkbill.webp"
+                    alt="Medicare Bulk Billing Practice"
+                    width={180}
+                    height={90}
+                    className="h-auto w-auto max-h-28"
+                  />
+                </div>
+
+                <h3 className="text-2xl font-bold mb-3 text-center" style={{ color: brandColor }}>
+                  Bulk Billing
+                </h3>
+                <p className="text-gray-600 text-center leading-relaxed mb-4">
+                  All Medicare cardholders bulk billed. No out-of-pocket costs for standard consultations.
+                </p>
+                <div className="pt-4 border-t border-gray-100">
+                  <p className="text-sm text-gray-500 text-center italic">
+                    Valid Medicare card required
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Bulk Billing Available</h3>
-              <p className="text-gray-600">Mixed and bulk billing options for new and existing patients. GP referrals can be bulk billed.</p>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: brandColor }}>
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+
+            {/* Card 2 - Multilingual */}
+            <div className="group">
+              <div className="bg-white rounded-2xl p-8 h-full shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-opacity-30"
+                   style={{ borderColor: accentColor }}>
+                {/* Image Container - Fixed Height */}
+                <div className="h-32 mb-6 flex items-center justify-center">
+                  <div className="w-28 h-28 rounded-full flex items-center justify-center"
+                       style={{ backgroundColor: brandColorLighter }}>
+                    <Image
+                      src="/images/employee.png"
+                      alt="Multilingual Healthcare Staff"
+                      width={80}
+                      height={80}
+                      className="w-20 h-20"
+                    />
+                  </div>
+                </div>
+
+                <h3 className="text-2xl font-bold mb-3 text-center" style={{ color: brandColor }}>
+                  Multilingual Staff
+                </h3>
+                <p className="text-gray-600 text-center leading-relaxed mb-4">
+                  Our team speaks English, Mandarin, Cantonese, and Teochew to better serve our diverse community.
+                </p>
+                <div className="flex flex-wrap justify-center gap-2 pt-4 border-t border-gray-100">
+                  <span className="px-3 py-1.5 rounded-full text-sm font-semibold text-white" style={{ backgroundColor: accentColor }}>
+                    普通话
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full text-sm font-semibold text-white" style={{ backgroundColor: accentColor }}>
+                    粤语
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full text-sm font-semibold text-white" style={{ backgroundColor: accentColor }}>
+                    潮州话
+                  </span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Multilingual Staff</h3>
-              <p className="text-gray-600">Our team speaks English, Mandarin (普通话), Cantonese (粤语), and Teochew (潮州话) to better serve our diverse community.</p>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: brandColor }}>
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+
+            {/* Card 3 - Location */}
+            <div className="group">
+              <div className="bg-white rounded-2xl p-8 h-full shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-opacity-30"
+                   style={{ borderColor: accentColor }}>
+                {/* Icon Container - Fixed Height */}
+                <div className="h-32 mb-6 flex items-center justify-center">
+                  <div className="w-28 h-28 rounded-full flex items-center justify-center"
+                       style={{ backgroundColor: brandColorLighter }}>
+                    <svg className="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: brandColor }}>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                </div>
+
+                <h3 className="text-2xl font-bold mb-3 text-center" style={{ color: brandColor }}>
+                  Central Location
+                </h3>
+                <p className="text-gray-600 text-center leading-relaxed mb-4">
+                  Level 1, 14-28 Amy Street<br />
+                  Campsie Centre, NSW 2194
+                </p>
+                <div className="flex items-center justify-center gap-2 pt-4 border-t border-gray-100">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: accentColor }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-sm font-semibold" style={{ color: accentColor }}>
+                    Across from Big W
+                  </span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Central Location</h3>
-              <p className="text-gray-600">Conveniently located in Campsie Centre with easy access and parking. Across from Big W.</p>
             </div>
           </div>
         </div>
@@ -392,7 +485,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-6">
             {/* General Practice */}
             <div className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200">
-              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: '#1C1B3A' }} />
+              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: brandColor }} />
               <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                 <Image
                   src="/images/gp.png"
@@ -402,18 +495,18 @@ export default function Home() {
                   className="w-14 h-14"
                 />
               </div>
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#1C1B3A' }}>General Practice</h3>
+              <h3 className="text-xl font-bold mb-3" style={{ color: brandColor }}>General Practice</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                Comprehensive primary healthcare with mixed and bulk billing options available
+                Comprehensive primary healthcare with bulk billing for all Medicare cardholders
               </p>
               <div className="text-sm space-y-2 pt-4 border-t border-gray-100">
-                <div className="flex items-center gap-2 font-medium" style={{ color: '#1C1B3A' }}>
+                <div className="flex items-center gap-2 font-medium" style={{ color: brandColor }}>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   Mon-Fri: 9am - 5pm
                 </div>
-                <div className="flex items-center gap-2 font-medium" style={{ color: '#1C1B3A' }}>
+                <div className="flex items-center gap-2 font-medium" style={{ color: brandColor }}>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -424,7 +517,7 @@ export default function Home() {
 
             {/* Physiotherapy */}
             <div className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200">
-              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: '#1C1B3A' }} />
+              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: brandColor }} />
               <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                 <Image
                   src="/images/physio.png"
@@ -434,12 +527,12 @@ export default function Home() {
                   className="w-14 h-14"
                 />
               </div>
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#1C1B3A' }}>Physiotherapy</h3>
+              <h3 className="text-xl font-bold mb-3" style={{ color: brandColor }}>Physiotherapy</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                 Professional physiotherapy services for injury recovery and pain management
               </p>
               <div className="text-sm space-y-2 pt-4 border-t border-gray-100">
-                <div className="flex items-center gap-2 font-medium" style={{ color: '#1C1B3A' }}>
+                <div className="flex items-center gap-2 font-medium" style={{ color: brandColor }}>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
@@ -451,7 +544,7 @@ export default function Home() {
 
             {/* Podiatry */}
             <div className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200">
-              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: '#1C1B3A' }} />
+              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: brandColor }} />
               <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                 <Image
                   src="/images/podiatry.png"
@@ -461,12 +554,12 @@ export default function Home() {
                   className="w-14 h-14"
                 />
               </div>
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#1C1B3A' }}>Podiatry</h3>
+              <h3 className="text-xl font-bold mb-3" style={{ color: brandColor }}>Podiatry</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                 Expert foot care and treatment for all podiatric conditions
               </p>
               <div className="text-sm space-y-2 pt-4 border-t border-gray-100">
-                <div className="flex items-center gap-2 font-medium" style={{ color: '#1C1B3A' }}>
+                <div className="flex items-center gap-2 font-medium" style={{ color: brandColor }}>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
@@ -478,7 +571,7 @@ export default function Home() {
 
             {/* Dietitian */}
             <div className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200">
-              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: '#1C1B3A' }} />
+              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: brandColor }} />
               <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                 <Image
                   src="/images/diet.png"
@@ -488,12 +581,12 @@ export default function Home() {
                   className="w-14 h-14"
                 />
               </div>
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#1C1B3A' }}>Dietitian</h3>
+              <h3 className="text-xl font-bold mb-3" style={{ color: brandColor }}>Dietitian</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                 Personalized nutrition advice and dietary planning
               </p>
               <div className="text-sm space-y-2 pt-4 border-t border-gray-100">
-                <div className="flex items-center gap-2 font-medium" style={{ color: '#1C1B3A' }}>
+                <div className="flex items-center gap-2 font-medium" style={{ color: brandColor }}>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
@@ -510,7 +603,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200 cursor-pointer block"
             >
-              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: '#1C1B3A' }} />
+              <div className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: brandColor }} />
               <div className="mb-4">
                 <Image
                   src="/images/heydoc.png"
@@ -520,12 +613,12 @@ export default function Home() {
                   className="h-10 w-auto"
                 />
               </div>
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#1C1B3A' }}>Fertility Telehealth</h3>
+              <h3 className="text-xl font-bold mb-3" style={{ color: brandColor }}>Fertility Telehealth</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                 Online fertility consultations with AHPRA-registered specialists
               </p>
               <div className="text-sm space-y-2 pt-4 border-t border-gray-100">
-                <div className="flex items-center gap-2 font-medium" style={{ color: '#1C1B3A' }}>
+                <div className="flex items-center gap-2 font-medium" style={{ color: brandColor }}>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -533,7 +626,7 @@ export default function Home() {
                 </div>
                 <p className="text-gray-500 ml-6 text-xs">
                   <span className="line-through mr-1">$49</span>
-                  <span className="font-bold" style={{ color: '#1C1B3A' }}>$10</span>
+                  <span className="font-bold" style={{ color: brandColor }}>$10</span>
                 </p>
               </div>
             </a>
@@ -563,12 +656,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="mt-8 bg-cyan-50 border-l-4 p-6 rounded" style={{ borderColor: brandColor }}>
-            <p className="text-gray-700">
-              <strong>Bulk Billing Available:</strong> Referrals from General Practitioners can be bulk billed.
-              New patients receive mixed billing; existing patients may opt for bulk billing.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -587,7 +674,7 @@ export default function Home() {
                     className="h-32 md:h-36 w-auto"
                   />
                 </div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight" style={{ color: '#1C1B3A' }}>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight" style={{ color: brandColor }}>
                   Looking for fertility help?
                 </h2>
                 <p className="text-xl text-gray-700 mb-8 leading-relaxed">
@@ -601,7 +688,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold" style={{ color: '#1C1B3A' }}>Available 24/7</p>
+                      <p className="font-semibold" style={{ color: brandColor }}>Available 24/7</p>
                       <p className="text-gray-600 text-sm">Book anytime, nationwide</p>
                     </div>
                   </div>
@@ -612,7 +699,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold" style={{ color: '#1C1B3A' }}>Fast Referrals</p>
+                      <p className="font-semibold" style={{ color: brandColor }}>Fast Referrals</p>
                       <p className="text-gray-600 text-sm">Receive within 30 mins</p>
                     </div>
                   </div>
@@ -623,7 +710,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold" style={{ color: '#1C1B3A' }}>Expert Specialists</p>
+                      <p className="font-semibold" style={{ color: brandColor }}>Expert Specialists</p>
                       <p className="text-gray-600 text-sm">AHPRA-registered doctors</p>
                     </div>
                   </div>
@@ -634,7 +721,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold" style={{ color: '#1C1B3A' }}>
+                      <p className="font-semibold" style={{ color: brandColor }}>
                         <span className="text-gray-400 line-through mr-2">$49</span>
                         <span>$10</span>
                       </p>
@@ -648,9 +735,9 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl shadow-lg transition-all duration-300 text-white hover:shadow-xl"
-                    style={{ backgroundColor: '#1C1B3A' }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2A2951'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1C1B3A'}
+                    style={{ backgroundColor: brandColor }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = brandColorHover}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = brandColor}
                   >
                     <span className="flex items-center gap-2">
                       Book a consultation now!
@@ -664,7 +751,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center justify-center px-8 py-4 text-lg font-bold border-2 rounded-xl transition-all duration-300"
-                    style={{ color: '#1C1B3A', borderColor: '#1C1B3A' }}
+                    style={{ color: brandColor, borderColor: brandColor }}
                   >
                     Learn More
                   </a>

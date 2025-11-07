@@ -11,6 +11,10 @@ const karla = Karla({
 export const metadata: Metadata = {
   title: "Campsie Centre Medical Clinic | GP, Physio, Podiatry & Dietitian | Bulk Billing NSW",
   description: "Your trusted medical clinic in Campsie Centre, NSW. Experienced GPs, physiotherapy, podiatry, dietitian & fertility telehealth services. Bulk billing available. Open Mon-Fri 9am-5pm, Sun 9am-3pm. Multilingual staff: English, Mandarin, Cantonese, Teochew. Book online or call (02) 9718 1888.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   keywords: [
     "medical clinic Campsie",
     "GP Campsie",

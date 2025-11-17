@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 import Script from "next/script";
 
@@ -10,7 +11,6 @@ const brandColorHover = 'oklch(0.35 0.1 223)'; // Darker blue for hover
 const brandColorLighter = 'oklch(0.9 0.05 223)'; // Light blue background
 const accentColor = 'oklch(0.5 0.12 180)'; // Teal/Cyan accent
 const accentColorHover = 'oklch(0.45 0.12 180)'; // Darker teal for hover
-const accentColorLighter = 'oklch(0.9 0.06 180)'; // Light teal background
 
 // Structured Data for Local Business SEO
 const structuredData = {
@@ -117,7 +117,7 @@ export default function Home() {
           <div className="flex items-center justify-between py-6 md:py-8">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <a href="/">
+              <Link href="/">
                 <Image
                   src="/images/CampsieCentreMedicalLogo.png"
                   alt="Campsie Centre Medical Clinic"
@@ -126,20 +126,20 @@ export default function Home() {
                   priority
                   className="h-auto w-auto max-w-[280px] md:max-w-[350px] lg:max-w-[400px]"
                 />
-              </a>
+              </Link>
             </div>
 
             {/* Navigation & Contact */}
             <div className="flex items-center gap-8">
               {/* Navigation Links */}
               <nav className="hidden lg:flex items-center gap-6">
-                <a
+                <Link
                   href="/"
                   className="text-base font-semibold hover:opacity-70 transition-opacity"
                   style={{ color: brandColor }}
                 >
                   Home
-                </a>
+                </Link>
                 <a
                   href="#services"
                   className="text-base font-semibold hover:opacity-70 transition-opacity"
@@ -154,7 +154,7 @@ export default function Home() {
                 >
                   Contact
                 </a>
-                <a
+                <Link
                   href="/careers"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-base font-semibold text-white transition-all duration-300 hover:scale-105"
                   style={{ backgroundColor: accentColor }}
@@ -165,7 +165,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   Careers
-                </a>
+                </Link>
               </nav>
 
               {/* Contact Info */}
